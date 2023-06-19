@@ -1,0 +1,55 @@
+﻿@model IEnumerable<crudSystem.Models.Employes>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-10 offset-1 ">
+            <h1 class="text-center text-primary">Employees Record</h1>
+            <a class="btn btn-sm btn-primary m-1" asp-controller="Employe" asp-action="Create">
+                Create Employee
+            </a>
+            <p class="text-center text-primary">@TempData["error"]</p>
+            <table class="table table-bordered">
+                <tr class="text-center">
+                    <th>
+                        Employee id
+                    </th>
+                    <th>
+                        First Name
+                    </th>
+                    <th>
+                        Last Name
+                    </th>
+                    <th>
+                        Status
+                    </th>
+                    <th>
+                        State
+                    </th>
+                    
+                    <th>
+                        Action
+                    </th>
+                </tr>
+                @foreach (var v in Model)
+                {
+                    <tr class="text-center">
+                        <td>@v.Id</td>
+                        <td>@v.firstName</td>
+                        <td>@v.lastName</td>
+                        <td>@v.Status</td>
+                        <td>@v.State</td>
+                        
+                        <td>
+                            <a class="btn btn-sm btn-success " asp-controller="Employe" asp-action="Edit" asp-route-id="@v.Id" >Edit</a>
+                            <a class="btn btn-sm btn-danger " asp-controller="Employe" asp-action="Delete" asp-route-id="@v.Id">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+
+    </div>
+</div>
